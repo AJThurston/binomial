@@ -1,7 +1,13 @@
 library(shiny)
+library(shinyWidgets)
 library(ggplot2)
 
 ui <- fluidPage(
+  
+  chooseSliderSkin(
+    skin = "Shiny",
+    color = "#336666"
+  ),
   
   # titlePanel("Bernoulli Trials Simulator"),
   
@@ -13,14 +19,16 @@ ui <- fluidPage(
                   min = 1,
                   max = 29,
                   value = 2,
-                  step = 1),
+                  step = 1,
+                  ticks = FALSE),
       
       sliderInput("prob",
                   "Probability of Success:",
                   min = 0,
                   max = 1,
                   value = .5,
-                  step = .01),
+                  step = .01,
+                  ticks = FALSE),
     ),
     
     mainPanel(
@@ -47,8 +55,7 @@ server <- function(input, output) {
         panel.grid.minor = element_blank(),
         axis.line = element_line(color = "black"),
         axis.ticks = element_blank())
-  }, height = 300, width = 800 )
+  }, height = 250, width = 675)
 }
-
 
 shinyApp(ui, server)
