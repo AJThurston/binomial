@@ -11,9 +11,16 @@ ui <- fluidPage(
       sliderInput("trials",
                   "Number of Bernoulli Trials:",
                   min = 1,
-                  max = 30,
+                  max = 29,
                   value = 2,
                   step = 1),
+      
+      sliderInput("prob",
+                  "Probability of Success:",
+                  min = 0,
+                  max = 1,
+                  value = .5,
+                  step = .01),
     ),
     
     mainPanel(
@@ -27,7 +34,7 @@ server <- function(input, output) {
   output$binomial_plot <- renderPlot({
     
     x_vals <- 0:input$trials
-    probabilities <- dbinom(x_vals, input$trials, .5)
+    probabilities <- dbinom(x_vals, input$trials, input$prob)
     data <- data.frame(successes = x_vals, probability = probabilities)
     
     ggplot(data, aes(x = successes, y = probability)) +
@@ -40,7 +47,7 @@ server <- function(input, output) {
         panel.grid.minor = element_blank(),
         axis.line = element_line(color = "black"),
         axis.ticks = element_blank())
-  })
+  }, height = 300, width = 800 )
 }
 
 shinyApp(ui, server)
