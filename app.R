@@ -17,7 +17,7 @@ ui <- fluidPage(
       sliderInput("trials",
                   "Number of Bernoulli Trials:",
                   min = 1,
-                  max = 29,
+                  max = 99,
                   value = 2,
                   step = 1,
                   ticks = FALSE),
