@@ -50,4 +50,5 @@ server <- function(input, output) {
   }, height = 300, width = 800 )
 }
 
+
 shinyApp(ui, server)
