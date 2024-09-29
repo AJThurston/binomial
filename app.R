@@ -55,7 +55,7 @@ server <- function(input, output) {
         panel.grid.minor = element_blank(),
         axis.line = element_line(color = "black"),
         axis.ticks = element_blank())
-  }, height = 250, width = 675)
+  }, height = 250, width = 650)
 }
 
 shinyApp(ui, server)
