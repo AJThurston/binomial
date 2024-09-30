@@ -56,6 +56,13 @@ server <- function(input, output) {
         axis.line = element_line(color = "black"),
         axis.ticks = element_blank())
   }, height = 250, width = 650)
+  
+  autoInvalidate <- reactiveTimer(29999)
+  observe({
+    autoInvalidate()
+    cat(".")
+  })
+  
 }
 
 shinyApp(ui, server)
